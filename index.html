@@ -1,1613 +1,957 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
-
 <head>
+<meta charset="UTF-8">
 
-<meta charset="utf-8">
-
-<meta
-  name="viewport"
-  content="width=device-width,initial-scale=1,viewport-fit=cover"
->
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
 <title>انتخابات مجلس الصف | 2026</title>
 
 <style>
-
-@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap');
 
 :root{
   --navy:#172554;
-  --blue:#3157b7;
+  --blue:#315b7b;
   --blue2:#496ed1;
   --gold:#d6a84f;
+  --gold2:#f3d58a;
   --ink:#172033;
   --muted:#69758a;
   --bg:#f5f7fb;
-  --card:#fff;
+  --card:#ffffff;
   --line:#e8ecf3;
   --green:#16856b;
-  --shadow:0 18px 55px rgba(23,37,84,.10)
+  --red:#c0392b;
+  --shadow:0 18px 55px rgba(23,37,84,.12);
 }
 
 *{
-  box-sizing:border-box
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
 }
 
 body{
   margin:0;
-  font-family:Cairo,system-ui,sans-serif;
+  font-family:'Cairo',Arial,sans-serif;
   background:
-    radial-gradient(circle at 90% 0,#e9efff 0,transparent 32%),
-    var(--bg);
-  color:var(--ink)
+    radial-gradient(circle at top right, rgba(73,110,209,.12), transparent 30%),
+    linear-gradient(180deg,#f8faff 0%,#eef3f9 100%);
+  color:var(--ink);
+  min-height:100vh;
 }
 
-.page{
-  max-width:1100px;
+button,
+input{
+  font-family:inherit;
+}
+
+button{
+  cursor:pointer;
+}
+
+.container{
+  width:min(1100px,92%);
   margin:auto;
-  padding:24px 18px 60px
 }
 
-.topbar{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:8px 4px 18px;
-  color:var(--muted);
-  font-size:13px
-}
-
-.brand{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  font-weight:800;
-  color:var(--navy)
-}
-
-.crest{
-  width:38px;
-  height:38px;
-  border-radius:12px;
-  background:linear-gradient(145deg,var(--blue),var(--navy));
-  display:grid;
-  place-items:center;
-  color:white;
-  box-shadow:0 8px 18px #3157b72b
-}
+/* ================= HEADER ================= */
 
 .hero{
-  position:relative;
-  overflow:hidden;
-  border-radius:30px;
-  padding:38px 28px;
+  background:
+    linear-gradient(135deg,rgba(23,37,84,.98),rgba(49,91,123,.96));
   color:white;
-  background:linear-gradient(135deg,#19316f,#3157b7 58%,#5678d5);
-  box-shadow:0 25px 65px #3157b72e
+  padding:28px 0 42px;
+  border-bottom-left-radius:35px;
+  border-bottom-right-radius:35px;
+  box-shadow:0 12px 35px rgba(23,37,84,.18);
 }
 
-.hero:after{
-  content:'';
-  position:absolute;
-  width:280px;
-  height:280px;
-  border:1px solid #ffffff2d;
-  border-radius:50%;
-  left:-80px;
-  top:-120px;
-  box-shadow:
-    0 0 0 35px #ffffff09,
-    0 0 0 70px #ffffff06
+.school-logo{
+  display:block;
+  width:min(230px,65vw);
+  max-height:210px;
+  object-fit:contain;
+  margin:5px auto 20px;
+  background:white;
+  border-radius:24px;
+  padding:12px;
+  box-shadow:0 10px 30px rgba(0,0,0,.16);
 }
 
-.hero-content{
-  position:relative;
-  z-index:1;
-  text-align:center
-}
-
-.eyebrow{
-  letter-spacing:2px;
-  font-size:12px;
-  opacity:.8;
-  font-weight:700
+.badge{
+  width:max-content;
+  max-width:100%;
+  margin:0 auto 14px;
+  padding:7px 18px;
+  border:1px solid rgba(255,255,255,.3);
+  border-radius:50px;
+  background:rgba(255,255,255,.1);
+  color:var(--gold2);
+  font-size:14px;
+  font-weight:700;
 }
 
 .hero h1{
-  font-size:clamp(30px,6vw,52px);
-  margin:7px 0 3px;
-  font-weight:800
-}
-
-.hero p{
+  text-align:center;
   margin:0;
-  opacity:.88;
-  font-size:15px
+  font-size:clamp(28px,6vw,48px);
+  font-weight:900;
+  line-height:1.35;
 }
 
-/* إعداد المهندس التقني */
+.hero h1 span{
+  color:var(--gold2);
+}
 
-.engineer{
-  margin:18px auto 0;
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  gap:7px;
-  padding:8px 15px;
-  border-radius:999px;
-  background:#ffffff18;
-  border:1px solid #ffffff35;
+.subtitle{
+  text-align:center;
+  margin:12px auto 0;
+  font-size:clamp(14px,3vw,19px);
+  opacity:.9;
+}
+
+.tech-credit{
+  width:max-content;
+  max-width:94%;
+  margin:22px auto 0;
+  padding:9px 18px;
+  border-radius:50px;
+  background:rgba(255,255,255,.1);
+  border:1px solid rgba(243,213,138,.35);
   color:#fff;
-  font-size:12px;
+  text-align:center;
+  font-size:14px;
   font-weight:700;
-  box-shadow:0 8px 20px #00000012
 }
 
-.engineer strong{
-  color:#ffe3a0
+/* ================= MAIN ================= */
+
+main{
+  padding:32px 0 60px;
 }
 
 .status{
-  margin:22px auto 0;
-  display:flex;
-  justify-content:center;
-  gap:8px;
-  flex-wrap:wrap
-}
-
-.pill{
-  background:#ffffff16;
-  border:1px solid #ffffff25;
-  padding:7px 13px;
-  border-radius:999px;
-  font-size:12px
-}
-
-.section{
-  background:var(--card);
-  border:1px solid #edf0f5;
-  border-radius:28px;
-  margin-top:18px;
-  padding:24px;
-  box-shadow:var(--shadow)
-}
-
-.section-head{
-  display:flex;
-  align-items:end;
-  justify-content:space-between;
-  gap:12px;
-  margin-bottom:18px
-}
-
-.section h2{
-  margin:0;
-  font-size:21px;
-  color:var(--navy)
-}
-
-.hint{
-  font-size:12px;
-  color:var(--muted)
-}
-
-.candidate-note{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:7px;
-  margin:4px 0 18px;
-  padding:11px 16px;
-  border:1px solid #e9dfc4;
-  border-radius:16px;
-  background:linear-gradient(135deg,#fffdf7,#f7f9ff);
-  color:#8b650d;
-  font-size:13px;
-  font-weight:700;
-  box-shadow:0 6px 18px #17255408
-}
-
-.candidate-note span{
-  color:var(--navy)
-}
-
-.role{
+  background:white;
   border:1px solid var(--line);
-  border-radius:22px;
-  margin:15px 0;
-  overflow:hidden;
-  background:#fbfcfe
+  border-radius:18px;
+  padding:14px 18px;
+  margin-bottom:22px;
+  box-shadow:0 8px 25px rgba(23,37,84,.06);
+  text-align:center;
+  font-size:14px;
+  color:var(--muted);
+}
+
+.status strong{
+  color:var(--green);
+}
+
+/* ================= SECTION ================= */
+
+.section-title{
+  text-align:center;
+  margin:10px 0 26px;
+}
+
+.section-title h2{
+  margin:0;
+  color:var(--navy);
+  font-size:clamp(23px,5vw,34px);
+  font-weight:900;
+}
+
+.section-title p{
+  margin:7px 0 0;
+  color:var(--muted);
+}
+
+/* ================= ROLE CARD ================= */
+
+.roles{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:22px;
+}
+
+.role-card{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:25px;
+  padding:24px;
+  box-shadow:var(--shadow);
+  transition:.2s ease;
+}
+
+.role-card:hover{
+  transform:translateY(-2px);
 }
 
 .role-head{
   display:flex;
   align-items:center;
-  gap:12px;
-  padding:16px 18px;
-  background:linear-gradient(180deg,#fff,#f9faff);
-  border-bottom:1px solid var(--line)
+  gap:14px;
+  margin-bottom:18px;
 }
 
 .role-icon{
-  width:43px;
-  height:43px;
-  border-radius:14px;
-  background:#edf2ff;
-  color:var(--blue);
-  display:grid;
-  place-items:center;
-  font-size:21px
+  width:55px;
+  height:55px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:18px;
+  background:linear-gradient(135deg,#fff6dc,#f7e4ae);
+  font-size:28px;
+  flex-shrink:0;
 }
 
 .role-title{
-  font-weight:800;
+  margin:0;
   color:var(--navy);
-  font-size:16px
+  font-size:20px;
+  font-weight:900;
 }
 
-.role-sub{
-  font-size:11px;
-  color:var(--muted)
+.role-desc{
+  margin:3px 0 0;
+  color:var(--muted);
+  font-size:13px;
 }
 
 .candidates{
   display:grid;
-  grid-template-columns:repeat(4,1fr);
   gap:10px;
-  padding:14px
 }
 
 .candidate{
-  position:relative
+  position:relative;
 }
 
 .candidate input{
   position:absolute;
-  opacity:0
+  opacity:0;
+  pointer-events:none;
 }
 
 .candidate label{
   display:flex;
   align-items:center;
-  gap:11px;
-  min-height:88px;
-  padding:12px;
-  border:1px solid var(--line);
-  border-radius:19px;
-  background:linear-gradient(145deg,#fff,#fbfcff);
-  cursor:pointer;
-  transition:.2s;
-  box-shadow:0 8px 24px #1725540d;
-  position:relative;
-  overflow:hidden
+  gap:12px;
+  padding:13px 15px;
+  border:2px solid var(--line);
+  border-radius:15px;
+  background:#fbfcfe;
+  color:var(--ink);
+  font-weight:700;
+  transition:.18s ease;
 }
 
-.candidate label:before{
-  content:'';
-  position:absolute;
-  inset:0 auto 0 0;
-  width:4px;
-  background:linear-gradient(180deg,var(--gold),var(--blue));
-  opacity:.75
-}
-
-.candidate label:hover{
-  transform:translateY(-2px);
-  border-color:#9eb2eb;
-  box-shadow:0 10px 22px #3157b714
-}
-
-.candidate input:checked+label{
-  border-color:var(--blue);
-  background:linear-gradient(145deg,#f5f7ff,#edf2ff);
-  box-shadow:0 0 0 3px #3157b718
-}
-
-.avatar{
-  width:48px;
-  height:48px;
-  flex:0 0 48px;
-  border-radius:16px;
-  display:grid;
-  place-items:center;
-  background:linear-gradient(145deg,#e8edff,#cbd7fb);
-  color:var(--navy);
-  font-weight:800;
-  font-size:18px;
-  box-shadow:
-    inset 0 0 0 1px #ffffffaa,
-    0 5px 12px #3157b718
-}
-
-.candidate:nth-child(2) .avatar{
-  background:linear-gradient(145deg,#fff1cf,#f4d99a)
-}
-
-.candidate:nth-child(3) .avatar{
-  background:linear-gradient(145deg,#dff7ef,#b8e5d6)
-}
-
-.candidate:nth-child(4) .avatar{
-  background:linear-gradient(145deg,#f0e4ff,#dac5f5)
-}
-
-.candidate:nth-child(1) .avatar:before{
-  content:'👑'
-}
-
-.candidate:nth-child(2) .avatar:before{
-  content:'⭐'
-}
-
-.candidate:nth-child(3) .avatar:before{
-  content:'🎯'
-}
-
-.candidate:nth-child(4) .avatar:before{
-  content:'🏅'
-}
-
-.name{
-  font-size:14px;
-  font-weight:800;
-  line-height:1.5;
-  color:var(--navy)
-}
-
-.check{
-  margin-right:auto;
-  width:20px;
-  height:20px;
-  border:2px solid #ccd3e0;
+.candidate label::before{
+  content:"";
+  width:19px;
+  height:19px;
+  border:2px solid #b7c0cf;
   border-radius:50%;
-  position:relative
+  flex-shrink:0;
+  transition:.18s ease;
 }
 
-.candidate input:checked+label .check{
-  border-color:var(--blue);
-  background:var(--blue)
+.candidate input:checked + label{
+  border-color:var(--blue2);
+  background:#f1f5ff;
+  color:var(--navy);
+  box-shadow:0 5px 16px rgba(73,110,209,.12);
 }
 
-.candidate input:checked+label .check:after{
-  content:'✓';
-  color:#fff;
-  font-size:12px;
-  position:absolute;
-  inset:0;
-  display:grid;
-  place-items:center
+.candidate input:checked + label::before{
+  border-color:var(--blue2);
+  box-shadow:inset 0 0 0 4px white;
+  background:var(--blue2);
 }
 
-.action{
-  position:sticky;
-  bottom:12px;
-  margin-top:22px;
-  padding:12px;
-  background:#ffffffdf;
-  backdrop-filter:blur(14px);
-  border:1px solid #e9edf5;
-  border-radius:20px;
-  box-shadow:0 15px 35px #17255418;
-  z-index:5
+/* ================= ACTIONS ================= */
+
+.actions{
+  display:flex;
+  justify-content:center;
+  gap:12px;
+  flex-wrap:wrap;
+  margin:30px 0;
 }
 
-.vote-btn{
-  width:100%;
+.btn{
   border:0;
   border-radius:15px;
-  padding:16px;
-  background:linear-gradient(135deg,var(--blue),#24449b);
-  color:#fff;
-  font-family:inherit;
-  font-size:17px;
+  padding:14px 25px;
+  font-size:16px;
   font-weight:800;
-  cursor:pointer;
-  box-shadow:0 12px 24px #3157b733;
-  transition:.2s
+  transition:.18s ease;
 }
 
-.vote-btn:hover{
-  transform:translateY(-1px)
+.btn:hover{
+  transform:translateY(-2px);
 }
+
+.btn-primary{
+  background:linear-gradient(135deg,var(--navy),var(--blue));
+  color:white;
+  box-shadow:0 10px 25px rgba(23,37,84,.2);
+}
+
+.btn-gold{
+  background:linear-gradient(135deg,#d6a84f,#edcb78);
+  color:#392b10;
+}
+
+.btn-light{
+  background:white;
+  border:1px solid var(--line);
+  color:var(--navy);
+}
+
+.btn-danger{
+  background:#fff0ee;
+  color:var(--red);
+  border:1px solid #ffd4cf;
+}
+
+/* ================= ERROR ================= */
 
 .error{
   display:none;
-  text-align:center;
-  color:#b42318;
-  font-size:13px;
-  margin-top:9px
-}
-
-/* النتائج */
-
-.results{
-  display:none
-}
-
-.vote-count-note{
-  margin:0 0 14px;
+  background:#fff0ee;
+  color:#a93226;
+  border:1px solid #ffd0ca;
+  border-radius:14px;
   padding:13px 16px;
-  border-radius:16px;
-  background:linear-gradient(135deg,#eef4ff,#fffaf0);
-  border:1px solid #e2e8f5;
-  color:var(--navy);
+  text-align:center;
   font-weight:700;
-  text-align:center
+  margin:15px 0;
 }
 
-.winner-card{
-  border:1px solid #e4e9f2;
+/* ================= RESULTS ================= */
+
+#results{
+  display:none;
+}
+
+.results-box{
+  background:white;
+  border-radius:28px;
+  border:1px solid var(--line);
+  box-shadow:var(--shadow);
+  padding:25px;
+}
+
+.result-item{
+  border:1px solid var(--line);
   border-radius:20px;
-  padding:15px 16px;
-  margin:10px 0;
-  background:linear-gradient(145deg,#fff,#f9fbff);
-  box-shadow:0 7px 20px #17255408
+  padding:20px;
+  margin-bottom:15px;
+  background:#fcfdff;
 }
 
-.role-line{
+.result-top{
   display:flex;
   align-items:center;
   justify-content:space-between;
-  gap:12px
+  gap:15px;
+  flex-wrap:wrap;
 }
 
-.role-name{
-  font-weight:800;
-  color:var(--navy)
+.result-role{
+  color:var(--navy);
+  font-weight:900;
+  font-size:18px;
 }
 
-.winner-name{
-  font-size:17px;
-  font-weight:800;
-  color:var(--blue);
-  margin-top:7px
-}
-
-.votes{
-  font-size:12px;
-  color:var(--muted)
-}
-
-.badge{
-  background:#fff5dc;
-  color:#8b650d;
-  border:1px solid #f1dfaa;
-  padding:5px 9px;
-  border-radius:999px;
-  font-size:11px;
-  font-weight:700
-}
-
-.bar{
-  height:7px;
-  background:#edf0f5;
-  border-radius:99px;
-  overflow:hidden;
-  margin-top:8px
-}
-
-.bar i{
-  display:block;
-  height:100%;
-  background:linear-gradient(90deg,var(--blue),#6b8be0);
-  border-radius:99px
-}
-
-/* تحديث النتائج */
-
-.refresh-results{
-  width:100%;
+.result-winner{
   margin-top:8px;
-  padding:14px;
-  border:1px solid #dfe4ee;
-  border-radius:15px;
-  background:linear-gradient(135deg,#f8faff,#fff);
+  font-size:23px;
+  font-weight:900;
   color:var(--blue);
-  font-family:inherit;
-  font-size:15px;
-  font-weight:800;
-  cursor:pointer;
-  transition:.2s
 }
 
-.refresh-results:hover{
-  transform:translateY(-1px);
-  background:#f0f4ff;
-  box-shadow:0 8px 18px #3157b718
-}
-
-.refresh-results:active{
-  transform:scale(.98)
-}
-
-/* تصويت طالب آخر */
-
-.vote-again{
-  width:100%;
-  margin-top:8px;
-  padding:14px;
-  border:0;
-  border-radius:15px;
-  background:linear-gradient(135deg,#16856b,#0f6f5a);
-  color:#fff;
-  font-family:inherit;
-  font-size:15px;
-  font-weight:800;
-  cursor:pointer;
-  box-shadow:0 10px 22px #16856b2b
-}
-
-.vote-again:hover{
-  transform:translateY(-1px)
-}
-
-/* بدء انتخابات جديدة */
-
-.reset{
-  margin-top:10px;
-  width:100%;
-  padding:14px;
-  border:1px solid #dfe4ee;
-  border-radius:15px;
-  background:white;
-  color:#596579;
-  font-family:inherit;
+.result-votes{
+  color:var(--muted);
+  margin-top:5px;
   font-size:14px;
+}
+
+.progress{
+  height:10px;
+  background:#edf0f5;
+  border-radius:20px;
+  overflow:hidden;
+  margin-top:14px;
+}
+
+.progress-bar{
+  height:100%;
+  background:linear-gradient(90deg,var(--blue2),var(--gold));
+  border-radius:20px;
+  transition:width .5s ease;
+}
+
+.tie-box{
+  margin-top:12px;
+  padding:12px;
+  border-radius:13px;
+  background:#fff8e6;
+  color:#765614;
+  border:1px solid #f2db9b;
+  font-weight:700;
+}
+
+.winner-badge{
+  display:inline-block;
+  margin-top:9px;
+  padding:5px 11px;
+  border-radius:30px;
+  background:#e8f7f2;
+  color:var(--green);
+  font-size:12px;
   font-weight:800;
-  cursor:pointer;
-  transition:.2s
 }
 
-.reset:hover{
-  background:#fff7f7;
-  color:#b42318;
-  border-color:#efb4b4
-}
-
-.reset:active{
-  transform:scale(.98)
-}
-
-/* النوافذ */
+/* ================= MODAL ================= */
 
 .modal{
   display:none;
   position:fixed;
   inset:0;
-  background:#0b1635a8;
-  backdrop-filter:blur(7px);
-  z-index:20;
+  z-index:9999;
+  background:rgba(9,17,35,.72);
+  backdrop-filter:blur(5px);
   align-items:center;
   justify-content:center;
-  padding:20px
+  padding:20px;
 }
 
-.modal-box{
-  max-width:430px;
-  width:100%;
+.modal-card{
+  width:min(500px,100%);
   background:white;
   border-radius:26px;
-  padding:28px;
+  padding:27px;
+  box-shadow:0 25px 80px rgba(0,0,0,.3);
   text-align:center;
-  box-shadow:0 30px 80px #0004
+  animation:modalIn .2s ease;
 }
 
-.modal-box .big{
-  font-size:45px
+@keyframes modalIn{
+  from{
+    opacity:0;
+    transform:translateY(15px) scale(.97);
+  }
+  to{
+    opacity:1;
+    transform:none;
+  }
 }
 
-.modal-box h3{
-  margin:8px 0;
-  color:var(--navy)
+.modal-icon{
+  font-size:45px;
+  margin-bottom:8px;
 }
 
-.modal-box p{
+.modal-card h3{
+  margin:0 0 8px;
+  color:var(--navy);
+  font-size:24px;
+}
+
+.modal-card p{
   color:var(--muted);
-  font-size:13px;
-  line-height:1.9
+  line-height:1.8;
+  margin:0 0 20px;
 }
 
-.modal-actions{
+.modal-buttons{
   display:flex;
   gap:10px;
-  margin-top:20px
+  justify-content:center;
+  flex-wrap:wrap;
 }
 
-.modal-actions button{
-  flex:1;
-  padding:13px;
-  border-radius:14px;
-  font-family:inherit;
-  font-weight:700;
-  cursor:pointer
-}
+/* ================= FOOTER ================= */
 
-.cancel{
-  border:1px solid var(--line);
-  background:#fff
-}
-
-.confirm{
-  border:0;
-  background:var(--blue);
-  color:#fff
-}
-
-.footer{
+footer{
   text-align:center;
-  color:#8a94a5;
-  font-size:11px;
-  margin-top:24px
+  color:var(--muted);
+  padding:25px 15px 35px;
+  font-size:13px;
 }
 
-@media(max-width:850px){
-
-  .candidates{
-    grid-template-columns:repeat(2,1fr)
-  }
-
+footer strong{
+  color:var(--navy);
 }
 
-@media(max-width:500px){
+/* ================= MOBILE ================= */
 
-  .page{
-    padding:12px 11px 45px
-  }
+@media(max-width:700px){
 
   .hero{
-    padding:30px 18px;
-    border-radius:24px
+    padding-top:20px;
+    border-bottom-left-radius:25px;
+    border-bottom-right-radius:25px;
   }
 
-  .section{
-    padding:15px;
-    border-radius:22px
+  .school-logo{
+    width:190px;
   }
 
-  .candidates{
-    grid-template-columns:1fr
+  .roles{
+    grid-template-columns:1fr;
   }
 
-  .candidate label{
-    min-height:62px
+  .role-card{
+    padding:19px;
   }
 
-  .topbar{
-    padding-top:2px
+  .actions{
+    flex-direction:column;
   }
 
-  .modal-box{
-    padding:24px 18px
+  .btn{
+    width:100%;
   }
 
-  .engineer{
-    font-size:11px
+  .result-top{
+    display:block;
   }
 
+  .results-box{
+    padding:17px;
+  }
 }
-
 </style>
-
 </head>
-
 
 <body>
 
-<div class="page">
+<!-- ================= HERO ================= -->
 
+<header class="hero">
+  <div class="container">
 
-  <!-- الشريط العلوي -->
+    <!-- صورة المدرسة -->
+    <img
+      src="IMG_0057.jpeg"
+      alt="شعار مدرسة كنوز المعرفة صباحي"
+      class="school-logo"
+    >
 
-  <div class="topbar">
+    <div class="badge">🏫 انتخابات مجلس الصف 2026</div>
 
-    <div class="brand">
+    <h1>
+      انتخابات <span>مجلس الصف</span>
+    </h1>
 
-      <span class="crest">
-        ✦
-      </span>
+    <p class="subtitle">
+      شارك بصوتك واختر من تراه مناسبًا لتمثيل الصف
+    </p>
 
-      مجلس الصف
-
-    </div>
-
-    <div>
-      انتخابات 2026 • تصويت إلكتروني
+    <div class="tech-credit">
+      إعداد المهندس التقني: المعتصم الحامدي 👨🏻‍💻👨🏻‍🔧
     </div>
 
   </div>
+</header>
 
 
-  <!-- الواجهة الرئيسية -->
+<!-- ================= MAIN ================= -->
 
-  <header class="hero">
+<main>
+<div class="container">
 
-    <div class="hero-content">
+  <div class="status">
+    💾 <strong>الانتخابات تعمل على هذا الجهاز</strong>
+    — يمكن للطلاب التصويت واحدًا تلو الآخر من نفس الجهاز.
+  </div>
 
-      <div class="eyebrow">
-        CLASS ELECTION
-      </div>
 
-      <h1>
-        انتخابات مجلس الصف
-      </h1>
+  <!-- ================= VOTING ================= -->
 
-      <p>
-        صوتك يصنع الفرق — اختر مرشحًا واحدًا لكل منصب
-      </p>
+  <section id="voting">
 
-      <!-- إعداد المهندس التقني -->
-
-      <div class="engineer">
-        ⚙️ إعداد المهندس التقني:
-        <strong>المعتصم الحامدي</strong>
-        👨🏻‍💻👨🏻‍🔧
-      </div>
-
-      <div class="status">
-
-        <span class="pill">
-          🔒 تصويت خاص
-        </span>
-
-        <span class="pill">
-          ✓ اختيار واحد لكل منصب
-        </span>
-
-        <span class="pill">
-          4 مناصب
-        </span>
-
-      </div>
-
+    <div class="section-title">
+      <h2>🗳️ اختر مرشحيك</h2>
+      <p>اختر مرشحًا واحدًا لكل منصب</p>
     </div>
 
-  </header>
-
-
-  <!-- قسم التصويت -->
-
-  <section id="voting" class="section">
-
-    <div class="section-head">
-
-      <div>
-
-        <h2>
-          بطاقة التصويت
-        </h2>
-
-        <div class="hint">
-          اختر مرشحًا واحدًا لكل منصب — الأسماء أمامك بشكل واضح
-        </div>
-
-      </div>
-
-      <div class="hint">
-        كل منصب يحتاج اختيارًا واحدًا
-      </div>
-
-    </div>
-
-
-    <div class="candidate-note">
-
-      ✦
-
-      <span>
-        المرشحون
-      </span>
-
-      — اختر اسمًا واحدًا لكل منصب
-
-    </div>
-
-
-    <div id="roles">
-
+    <div class="roles">
 
       <!-- رئيس الصف -->
-
-      <div class="role">
+      <div class="role-card">
 
         <div class="role-head">
-
-          <div class="role-icon">
-            👑
-          </div>
+          <div class="role-icon">👑</div>
 
           <div>
-
-            <div class="role-title">
-              رئيس الصف
-            </div>
-
-            <div class="role-sub">
+            <h3 class="role-title">رئيس الصف</h3>
+            <p class="role-desc">
               قيادة الصف وتمثيل الطلاب
-            </div>
-
+            </p>
           </div>
-
         </div>
-
 
         <div class="candidates">
 
           <div class="candidate">
-
-            <input
-              type="radio"
-              id="r0c0"
-              name="role0"
-              value="هاجر البلوشي"
-            >
-
-            <label for="r0c0">
-
-              <span class="avatar"></span>
-
-              <span class="name">
-                هاجر البلوشي
-              </span>
-
-              <span class="check"></span>
-
-            </label>
-
+            <input type="radio" id="role0_hajar" name="role0" value="هاجر البلوشي">
+            <label for="role0_hajar">هاجر البلوشي</label>
           </div>
 
-
           <div class="candidate">
-
-            <input
-              type="radio"
-              id="r0c1"
-              name="role0"
-              value="عبدالملك الهنائي"
-            >
-
-            <label for="r0c1">
-
-              <span class="avatar"></span>
-
-              <span class="name">
-                عبدالملك الهنائي
-              </span>
-
-              <span class="check"></span>
-
-            </label>
-
+            <input type="radio" id="role0_abdulmalik" name="role0" value="عبدالملك الهنائي">
+            <label for="role0_abdulmalik">عبدالملك الهنائي</label>
           </div>
 
-
           <div class="candidate">
-
-            <input
-              type="radio"
-              id="r0c2"
-              name="role0"
-              value="الحارث الخروصي"
-            >
-
-            <label for="r0c2">
-
-              <span class="avatar"></span>
-
-              <span class="name">
-                الحارث الخروصي
-              </span>
-
-              <span class="check"></span>
-
-            </label>
-
+            <input type="radio" id="role0_harith" name="role0" value="الحارث الخروصي">
+            <label for="role0_harith">الحارث الخروصي</label>
           </div>
 
-
           <div class="candidate">
-
-            <input
-              type="radio"
-              id="r0c3"
-              name="role0"
-              value="يعقوب البلوشي"
-            >
-
-            <label for="r0c3">
-
-              <span class="avatar"></span>
-
-              <span class="name">
-                يعقوب البلوشي
-              </span>
-
-              <span class="check"></span>
-
-            </label>
-
+            <input type="radio" id="role0_yacoub" name="role0" value="يعقوب البلوشي">
+            <label for="role0_yacoub">يعقوب البلوشي</label>
           </div>
 
         </div>
-
       </div>
 
 
       <!-- نائب الرئيس -->
-
-      <div class="role">
+      <div class="role-card">
 
         <div class="role-head">
-
-          <div class="role-icon">
-            ⭐
-          </div>
+          <div class="role-icon">⭐</div>
 
           <div>
-
-            <div class="role-title">
-              نائب الرئيس
-            </div>
-
-            <div class="role-sub">
+            <h3 class="role-title">نائب الرئيس</h3>
+            <p class="role-desc">
               مساندة الرئيس وتنظيم العمل
-            </div>
-
+            </p>
           </div>
-
         </div>
-
 
         <div class="candidates">
 
           <div class="candidate">
-
-            <input
-              type="radio"
-              id="r1c0"
-              name="role1"
-              value="هاجر البلوشي"
-            >
-
-            <label for="r1c0">
-
-              <span class="avatar"></span>
-
-              <span class="name">
-                هاجر البلوشي
-              </span>
-
-              <span class="check"></span>
-
-            </label>
-
+            <input type="radio" id="role1_hajar" name="role1" value="هاجر البلوشي">
+            <label for="role1_hajar">هاجر البلوشي</label>
           </div>
 
-
           <div class="candidate">
-
-            <input
-              type="radio"
-              id="r1c1"
-              name="role1"
-              value="عبدالملك الهنائي"
-            >
-
-            <label for="r1c1">
-
-              <span class="avatar"></span>
-
-              <span class="name">
-                عبدالملك الهنائي
-              </span>
-
-              <span class="check"></span>
-
-            </label>
-
+            <input type="radio" id="role1_abdulmalik" name="role1" value="عبدالملك الهنائي">
+            <label for="role1_abdulmalik">عبدالملك الهنائي</label>
           </div>
 
-
           <div class="candidate">
-
-            <input
-              type="radio"
-              id="r1c2"
-              name="role1"
-              value="الحارث الخروصي"
-            >
-
-            <label for="r1c2">
-
-              <span class="avatar"></span>
-
-              <span class="name">
-                الحارث الخروصي
-              </span>
-
-              <span class="check"></span>
-
-            </label>
-
+            <input type="radio" id="role1_harith" name="role1" value="الحارث الخروصي">
+            <label for="role1_harith">الحارث الخروصي</label>
           </div>
 
-
           <div class="candidate">
-
-            <input
-              type="radio"
-              id="r1c3"
-              name="role1"
-              value="يعقوب البلوشي"
-            >
-
-            <label for="r1c3">
-
-              <span class="avatar"></span>
-
-              <span class="name">
-                يعقوب البلوشي
-              </span>
-
-              <span class="check"></span>
-
-            </label>
-
+            <input type="radio" id="role1_yacoub" name="role1" value="يعقوب البلوشي">
+            <label for="role1_yacoub">يعقوب البلوشي</label>
           </div>
 
         </div>
-
       </div>
 
 
       <!-- أمين السر -->
-
-      <div class="role">
+      <div class="role-card">
 
         <div class="role-head">
-
-          <div class="role-icon">
-            📝
-          </div>
+          <div class="role-icon">📝</div>
 
           <div>
-
-            <div class="role-title">
-              أمين السر
-            </div>
-
-            <div class="role-sub">
+            <h3 class="role-title">أمين السر</h3>
+            <p class="role-desc">
               تنظيم الملاحظات والمهام
-            </div>
-
+            </p>
           </div>
-
         </div>
-
 
         <div class="candidates">
 
           <div class="candidate">
-
-            <input
-              type="radio"
-              id="r2c0"
-              name="role2"
-              value="هاجر البلوشي"
-            >
-
-            <label for="r2c0">
-
-              <span class="avatar"></span>
-
-              <span class="name">
-                هاجر البلوشي
-              </span>
-
-              <span class="check"></span>
-
-            </label>
-
+            <input type="radio" id="role2_hajar" name="role2" value="هاجر البلوشي">
+            <label for="role2_hajar">هاجر البلوشي</label>
           </div>
 
-
           <div class="candidate">
-
-            <input
-              type="radio"
-              id="r2c1"
-              name="role2"
-              value="عبدالملك الهنائي"
-            >
-
-            <label for="r2c1">
-
-              <span class="avatar"></span>
-
-              <span class="name">
-                عبدالملك الهنائي
-              </span>
-
-              <span class="check"></span>
-
-            </label>
-
+            <input type="radio" id="role2_abdulmalik" name="role2" value="عبدالملك الهنائي">
+            <label for="role2_abdulmalik">عبدالملك الهنائي</label>
           </div>
 
-
           <div class="candidate">
-
-            <input
-              type="radio"
-              id="r2c2"
-              name="role2"
-              value="الحارث الخروصي"
-            >
-
-            <label for="r2c2">
-
-              <span class="avatar"></span>
-
-              <span class="name">
-                الحارث الخروصي
-              </span>
-
-              <span class="check"></span>
-
-            </label>
-
+            <input type="radio" id="role2_harith" name="role2" value="الحارث الخروصي">
+            <label for="role2_harith">الحارث الخروصي</label>
           </div>
 
-
           <div class="candidate">
-
-            <input
-              type="radio"
-              id="r2c3"
-              name="role2"
-              value="يعقوب البلوشي"
-            >
-
-            <label for="r2c3">
-
-              <span class="avatar"></span>
-
-              <span class="name">
-                يعقوب البلوشي
-              </span>
-
-              <span class="check"></span>
-
-            </label>
-
+            <input type="radio" id="role2_yacoub" name="role2" value="يعقوب البلوشي">
+            <label for="role2_yacoub">يعقوب البلوشي</label>
           </div>
 
         </div>
-
       </div>
 
 
       <!-- العلاقات العامة -->
-
-      <div class="role">
+      <div class="role-card">
 
         <div class="role-head">
-
-          <div class="role-icon">
-            🤝
-          </div>
+          <div class="role-icon">🤝</div>
 
           <div>
-
-            <div class="role-title">
-              العلاقات العامة
-            </div>
-
-            <div class="role-sub">
+            <h3 class="role-title">العلاقات العامة</h3>
+            <p class="role-desc">
               التواصل وتمثيل الصف
-            </div>
-
+            </p>
           </div>
-
         </div>
-
 
         <div class="candidates">
 
           <div class="candidate">
-
-            <input
-              type="radio"
-              id="r3c0"
-              name="role3"
-              value="هاجر البلوشي"
-            >
-
-            <label for="r3c0">
-
-              <span class="avatar"></span>
-
-              <span class="name">
-                هاجر البلوشي
-              </span>
-
-              <span class="check"></span>
-
-            </label>
-
+            <input type="radio" id="role3_hajar" name="role3" value="هاجر البلوشي">
+            <label for="role3_hajar">هاجر البلوشي</label>
           </div>
 
-
           <div class="candidate">
-
-            <input
-              type="radio"
-              id="r3c1"
-              name="role3"
-              value="عبدالملك الهنائي"
-            >
-
-            <label for="r3c1">
-
-              <span class="avatar"></span>
-
-              <span class="name">
-                عبدالملك الهنائي
-              </span>
-
-              <span class="check"></span>
-
-            </label>
-
+            <input type="radio" id="role3_abdulmalik" name="role3" value="عبدالملك الهنائي">
+            <label for="role3_abdulmalik">عبدالملك الهنائي</label>
           </div>
 
-
           <div class="candidate">
-
-            <input
-              type="radio"
-              id="r3c2"
-              name="role3"
-              value="الحارث الخروصي"
-            >
-
-            <label for="r3c2">
-
-              <span class="avatar"></span>
-
-              <span class="name">
-                الحارث الخروصي
-              </span>
-
-              <span class="check"></span>
-
-            </label>
-
+            <input type="radio" id="role3_harith" name="role3" value="الحارث الخروصي">
+            <label for="role3_harith">الحارث الخروصي</label>
           </div>
 
-
           <div class="candidate">
-
-            <input
-              type="radio"
-              id="r3c3"
-              name="role3"
-              value="يعقوب البلوشي"
-            >
-
-            <label for="r3c3">
-
-              <span class="avatar"></span>
-
-              <span class="name">
-                يعقوب البلوشي
-              </span>
-
-              <span class="check"></span>
-
-            </label>
-
+            <input type="radio" id="role3_yacoub" name="role3" value="يعقوب البلوشي">
+            <label for="role3_yacoub">يعقوب البلوشي</label>
           </div>
 
         </div>
-
       </div>
 
     </div>
 
 
-    <!-- زر التصويت -->
+    <div id="error" class="error">
+      ⚠️ الرجاء اختيار مرشح لكل منصب قبل إرسال التصويت.
+    </div>
 
-    <div class="action">
+
+    <div class="actions">
 
       <button
-        class="vote-btn"
-        onclick="openConfirm()"
+        class="btn btn-primary"
         type="button"
-      >
-        تأكيد التصويت <span>←</span>
+        id="voteBtn">
+        🗳️ إرسال التصويت
       </button>
 
-      <div id="error" class="error">
-        يرجى اختيار مرشح لكل منصب قبل الإرسال.
-      </div>
+      <button
+        class="btn btn-danger"
+        type="button"
+        id="resetElectionBtn">
+        🔄 بدء انتخابات جديدة
+      </button>
 
     </div>
 
   </section>
 
 
-  <!-- النتائج -->
+  <!-- ================= RESULTS ================= -->
 
-  <section
-    id="results"
-    class="section results"
-  >
+  <section id="results">
 
-    <div class="section-head">
+    <div class="section-title">
+      <h2>🏆 نتائج الانتخابات</h2>
+      <p>النتائج الحالية المحفوظة على هذا الجهاز</p>
+    </div>
 
-      <div>
+    <div class="results-box">
 
-        <h2>
-          📊 نتائج التصويت
-        </h2>
+      <div id="resultList"></div>
 
-        <div class="hint">
-          تظهر النتائج بعد كل تصويت، والأعلى تصويتًا يتولى المنصب
-        </div>
+      <div class="actions">
+
+        <button
+          class="btn btn-gold"
+          type="button"
+          id="newVoterBtn">
+          👤 طالب آخر يصوّت
+        </button>
+
+        <button
+          class="btn btn-light"
+          type="button"
+          id="refreshBtn">
+          🔄 تحديث النتائج
+        </button>
 
       </div>
 
-      <span class="badge">
-        تم تسجيل التصويت ✓
-      </span>
-
     </div>
-
-
-    <div class="vote-count-note">
-      🗳️ تم تسجيل تصويتك بنجاح — هذه هي النتائج الحالية
-    </div>
-
-
-    <div id="resultList"></div>
-
-
-    <!-- تحديث النتائج -->
-
-    <button
-      class="refresh-results"
-      onclick="refreshResults()"
-      type="button"
-    >
-      🔄 تحديث النتائج
-    </button>
-
-
-    <!-- تصويت طالب آخر -->
-
-    <button
-      class="vote-again"
-      onclick="newVoter()"
-      type="button"
-    >
-      👤 تصويت طالب آخر
-    </button>
-
-
-    <!-- بدء انتخابات جديدة -->
-
-    <button
-      class="reset"
-      id="resetElectionBtn"
-      type="button"
-    >
-      🗑️ بدء انتخابات جديدة
-    </button>
 
   </section>
-
-
-  <div class="footer">
-    نظام انتخابات صفّي مصمم بتجربة بسيطة وأنيقة ✦
-  </div>
 
 </div>
+</main>
 
 
-<!-- نافذة تأكيد التصويت -->
+<!-- ================= VOTE CONFIRM MODAL ================= -->
 
-<div
-  class="modal"
-  id="modal"
->
+<div class="modal" id="voteConfirmModal">
 
-  <div class="modal-box">
+  <div class="modal-card">
 
-    <div class="big">
-      🗳️
-    </div>
+    <div class="modal-icon">🗳️</div>
 
-    <h3>
-      هل أنت متأكد من تصويتك؟
-    </h3>
+    <h3>تأكيد التصويت</h3>
 
     <p>
-      بعد التأكيد سيتم حفظ اختياراتك،
-      ولا يمكن تعديلها من هذه الشاشة.
+      هل أنت متأكد من اختياراتك؟
+      بعد إرسال التصويت سيتم احتساب أصواتك.
     </p>
 
-    <div class="modal-actions">
+    <div class="modal-buttons">
 
       <button
-        class="cancel"
-        onclick="closeConfirm()"
+        class="btn btn-primary"
         type="button"
-      >
-        مراجعة
+        id="confirmVoteBtn">
+        نعم، أرسل التصويت
       </button>
 
       <button
-        class="confirm"
-        onclick="submitVote()"
+        class="btn btn-light"
         type="button"
-      >
-        نعم، تأكيد التصويت
+        id="cancelVoteBtn">
+        إلغاء
       </button>
 
     </div>
 
   </div>
-
 </div>
 
 
-<!-- نافذة تأكيد بدء انتخابات جديدة -->
+<!-- ================= RESET MODAL ================= -->
 
-<div
-  class="modal"
-  id="resetConfirmModal"
->
+<div class="modal" id="resetConfirmModal">
 
-  <div class="modal-box">
+  <div class="modal-card">
 
-    <div class="big">
-      🗑️
-    </div>
+    <div class="modal-icon">⚠️</div>
 
-    <h3>
-      بدء انتخابات جديدة؟
-    </h3>
+    <h3>بدء انتخابات جديدة</h3>
 
     <p>
-      سيتم حذف جميع الأصوات الحالية من هذا الجهاز
+      سيتم حذف جميع الأصوات والنتائج الحالية
       والبدء من الصفر.
       <br>
       هل أنت متأكد؟
     </p>
 
-    <div class="modal-actions">
+    <div class="modal-buttons">
 
       <button
-        class="cancel"
+        class="btn btn-danger"
         type="button"
-        onclick="cancelResetElection()"
-      >
-        إلغاء
+        id="confirmResetBtn">
+        نعم، ابدأ من جديد
       </button>
 
       <button
-        class="confirm"
+        class="btn btn-light"
         type="button"
-        onclick="confirmResetElection()"
-      >
-        نعم، ابدأ من جديد
+        id="cancelResetBtn">
+        إلغاء
       </button>
 
     </div>
 
   </div>
-
 </div>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+  <strong>انتخابات مجلس الصف 2026</strong>
+  <br>
+  بالتوفيق لجميع المرشحين 🌟
+</footer>
 
 
 <script>
 
-/* أسماء المرشحين */
-
-const candidates = [
-  'هاجر البلوشي',
-  'عبدالملك الهنائي',
-  'الحارث الخروصي',
-  'يعقوب البلوشي'
-];
-
-
-/* المناصب */
+/* =========================================
+   بيانات الانتخابات
+========================================= */
 
 const roles = [
-
   [
-    'رئيس الصف',
-    '👑',
-    'قيادة الصف وتمثيل الطلاب'
+    "رئيس الصف",
+    "👑"
   ],
-
   [
-    'نائب الرئيس',
-    '⭐',
-    'مساندة الرئيس وتنظيم العمل'
+    "نائب الرئيس",
+    "⭐"
   ],
-
   [
-    'أمين السر',
-    '📝',
-    'تنظيم الملاحظات والمهام'
+    "أمين السر",
+    "📝"
   ],
-
   [
-    'العلاقات العامة',
-    '🤝',
-    'التواصل وتمثيل الصف'
+    "العلاقات العامة",
+    "🤝"
   ]
+];
 
+const candidates = [
+  "هاجر البلوشي",
+  "عبدالملك الهنائي",
+  "الحارث الخروصي",
+  "يعقوب البلوشي"
 ];
 
 
-/* فتح نافذة تأكيد التصويت */
-
-function openConfirm(){
-
-  const ok = roles.every(
-    (_, i) =>
-      document.querySelector(
-        `input[name="role${i}"]:checked`
-      )
-  );
-
-
-  document.getElementById('error').style.display =
-    ok ? 'none' : 'block';
-
-
-  if(ok){
-
-    document.getElementById('modal').style.display =
-      'flex';
-
-  }
-
-}
-
-
-/* إغلاق نافذة تأكيد التصويت */
-
-function closeConfirm(){
-
-  document.getElementById('modal').style.display =
-    'none';
-
-}
-
-
-/* الحصول على الأصوات من نفس الجهاز */
+/* =========================================
+   قراءة البيانات
+========================================= */
 
 function getData(){
 
+  const saved = localStorage.getItem(
+    "classElectionVotes"
+  );
+
+  if(!saved){
+
+    return {};
+
+  }
+
   try{
-
-    const saved =
-      localStorage.getItem('classElectionVotes');
-
-    if(!saved){
-      return {};
-    }
 
     return JSON.parse(saved);
 
   }catch(error){
-
-    console.error(error);
 
     return {};
 
@@ -1616,59 +960,131 @@ function getData(){
 }
 
 
-/* تسجيل التصويت */
+/* =========================================
+   إظهار رسالة الخطأ
+========================================= */
+
+function showError(){
+
+  document.getElementById("error").style.display = "block";
+
+}
+
+
+/* =========================================
+   إخفاء رسالة الخطأ
+========================================= */
+
+function hideError(){
+
+  document.getElementById("error").style.display = "none";
+
+}
+
+
+/* =========================================
+   فتح نافذة التأكيد
+========================================= */
+
+function openVoteConfirm(){
+
+  hideError();
+
+  let complete = true;
+
+  roles.forEach(function(role,index){
+
+    const selected = document.querySelector(
+      'input[name="role' + index + '"]:checked'
+    );
+
+    if(!selected){
+
+      complete = false;
+
+    }
+
+  });
+
+  if(!complete){
+
+    showError();
+
+    return;
+
+  }
+
+  document.getElementById(
+    "voteConfirmModal"
+  ).style.display = "flex";
+
+}
+
+
+/* =========================================
+   إغلاق نافذة التصويت
+========================================= */
+
+function closeVoteConfirm(){
+
+  document.getElementById(
+    "voteConfirmModal"
+  ).style.display = "none";
+
+}
+
+
+/* =========================================
+   إرسال التصويت
+========================================= */
 
 function submitVote(){
 
   let data = getData();
 
+  roles.forEach(function(role,index){
 
-  roles.forEach((role, i)=>{
+    const selected = document.querySelector(
+      'input[name="role' + index + '"]:checked'
+    );
 
-    const selected =
-      document.querySelector(
-        `input[name="role${i}"]:checked`
-      );
+    if(!selected){
 
-
-    if(!selected) return;
-
-
-    const name = selected.value;
-
-
-    if(!data[role[0]]){
-
-      data[role[0]] = {};
+      return;
 
     }
 
+    const roleName = role[0];
+    const candidateName = selected.value;
 
-    data[role[0]][name] =
-      (Number(data[role[0]][name]) || 0) + 1;
+    if(!data[roleName]){
+
+      data[roleName] = {};
+
+    }
+
+    if(!data[roleName][candidateName]){
+
+      data[roleName][candidateName] = 0;
+
+    }
+
+    data[roleName][candidateName]++;
 
   });
 
 
-  /*
-   * حفظ الأصوات على نفس الجهاز
-   */
-
   localStorage.setItem(
-    'classElectionVotes',
+    "classElectionVotes",
     JSON.stringify(data)
   );
 
 
-  closeConfirm();
+  closeVoteConfirm();
 
-
-  /*
-   * إخفاء التصويت وإظهار النتائج
-   */
-
-  document.getElementById('voting').style.display =
-    'none';
+  document.getElementById(
+    "voting"
+  ).style.display = "none";
 
 
   showResults();
@@ -1676,291 +1092,468 @@ function submitVote(){
 }
 
 
-/* عرض النتائج */
+/* =========================================
+   حساب نتائج منصب
+========================================= */
+
+function calculateRoleResult(roleName,data){
+
+  const votes = data[roleName] || {};
+
+  let max = 0;
+
+  candidates.forEach(function(candidate){
+
+    const count = votes[candidate] || 0;
+
+    if(count > max){
+
+      max = count;
+
+    }
+
+  });
+
+
+  const leaders = candidates.filter(function(candidate){
+
+    return (votes[candidate] || 0) === max;
+
+  });
+
+
+  let total = 0;
+
+  candidates.forEach(function(candidate){
+
+    total += votes[candidate] || 0;
+
+  });
+
+
+  return {
+    votes:votes,
+    max:max,
+    leaders:leaders,
+    total:total
+  };
+
+}
+
+
+/* =========================================
+   عرض النتائج
+========================================= */
 
 function showResults(){
 
   const data = getData();
 
-  let html = '';
+  const resultList =
+    document.getElementById("resultList");
+
+  resultList.innerHTML = "";
 
 
-  roles.forEach(role=>{
+  roles.forEach(function(role){
 
-    const counts =
-      data[role[0]] || {};
+    const roleName = role[0];
+    const roleIcon = role[1];
 
-
-    const total =
-      Object.values(counts)
-        .reduce(
-          (sum, value) =>
-            sum + Number(value || 0),
-          0
-        );
+    const result =
+      calculateRoleResult(roleName,data);
 
 
-    const max =
-      Math.max(
-        0,
-        ...Object.values(counts)
-          .map(value => Number(value || 0))
-      );
+    const item =
+      document.createElement("div");
+
+    item.className = "result-item";
 
 
-    const winners =
-      candidates.filter(
-        name =>
-          Number(counts[name] || 0) === max &&
-          max > 0
-      );
+    let leaderText = "";
+
+    if(result.total === 0){
+
+      leaderText = "لا توجد أصوات حتى الآن";
+
+    }else if(result.leaders.length > 1){
+
+      leaderText =
+        "تعادل بين: " +
+        result.leaders.join(" و ");
+
+    }else{
+
+      leaderText =
+        "الفائز: " +
+        result.leaders[0];
+
+    }
 
 
-    const winnerText =
-      winners.length
-        ? winners.join(' و ')
-        : 'لا توجد أصوات بعد';
-
-
-    const percentage =
-      total > 0 && max > 0
-        ? Math.round((max / total) * 100)
-        : 0;
-
+    let html = "";
 
     html += `
+      <div class="result-top">
 
-      <div class="winner-card">
-
-        <div class="role-line">
-
-          <span class="role-name">
-            ${role[1]} ${role[0]}
-          </span>
-
-          <span class="badge">
-            ${total}
-            ${total === 1 ? 'صوت' : 'أصوات'}
-          </span>
-
-        </div>
-
-
-        <div class="winner-name">
-          🏆 ${winnerText}
-        </div>
-
-
-        <div class="votes">
-
-          ${max}
-          ${max === 1 ? 'صوت' : 'أصوات'}
-
-          • ${percentage}%
-          من أصوات هذا المنصب
-
-        </div>
-
-
-        <div class="bar">
-
-          <i style="width:${percentage}%"></i>
-
+        <div class="result-role">
+          ${roleIcon} ${roleName}
         </div>
 
       </div>
 
+      <div class="result-winner">
+        ${leaderText}
+      </div>
     `;
+
+
+    if(result.total > 0){
+
+      if(result.leaders.length > 1){
+
+        html += `
+          <div class="tie-box">
+            ⚖️ يوجد تعادل في هذا المنصب.
+            يرجى إعادة التصويت أو اعتماد طريقة الحسم التي يقررها المشرف.
+          </div>
+        `;
+
+      }
+
+
+      candidates.forEach(function(candidate){
+
+        const count =
+          result.votes[candidate] || 0;
+
+        const percentage =
+          result.total === 0
+          ? 0
+          : Math.round(
+              (count / result.total) * 100
+            );
+
+
+        html += `
+          <div style="margin-top:14px">
+
+            <div style="
+              display:flex;
+              justify-content:space-between;
+              gap:10px;
+              font-size:14px;
+              font-weight:700;
+            ">
+
+              <span>${candidate}</span>
+
+              <span>
+                ${count} صوت
+                (${percentage}%)
+              </span>
+
+            </div>
+
+            <div class="progress">
+
+              <div
+                class="progress-bar"
+                style="width:${percentage}%">
+              </div>
+
+            </div>
+
+          </div>
+        `;
+
+      });
+
+    }
+
+
+    item.innerHTML = html;
+
+    resultList.appendChild(item);
 
   });
 
 
-  document.getElementById('resultList').innerHTML =
-    html;
+  document.getElementById(
+    "results"
+  ).style.display = "block";
 
 
-  document.getElementById('results').style.display =
-    'block';
-
-}
-
-
-/* تحديث النتائج */
-
-function refreshResults(){
-
-  showResults();
-
-
-  const button =
-    document.querySelector('.refresh-results');
-
-
-  if(!button) return;
-
-
-  button.textContent =
-    '✓ تم تحديث النتائج';
-
-
-  setTimeout(()=>{
-
-    button.textContent =
-      '🔄 تحديث النتائج';
-
-  },1200);
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
 
 }
 
 
-/* تصويت طالب آخر */
+/* =========================================
+   طالب آخر يصوّت
+========================================= */
 
 function newVoter(){
 
-  document.getElementById('results').style.display =
-    'none';
+  document.getElementById(
+    "results"
+  ).style.display = "none";
 
 
-  document.getElementById('voting').style.display =
-    'block';
+  document.getElementById(
+    "voting"
+  ).style.display = "block";
 
 
-  document
-    .querySelectorAll('input[type="radio"]')
-    .forEach(input => {
+  document.querySelectorAll(
+    'input[type="radio"]'
+  ).forEach(function(input){
 
-      input.checked = false;
+    input.checked = false;
 
-    });
+  });
 
 
-  document.getElementById('error').style.display =
-    'none';
+  hideError();
 
 
   window.scrollTo({
-
     top:0,
-
-    behavior:'smooth'
-
+    behavior:"smooth"
   });
 
 }
 
 
-/* فتح نافذة بدء انتخابات جديدة */
+/* =========================================
+   فتح نافذة إعادة الانتخابات
+========================================= */
 
-document
-  .getElementById('resetElectionBtn')
-  .addEventListener(
-    'click',
-    function(){
+function openResetModal(){
 
-      document
-        .getElementById('resetConfirmModal')
-        .style.display = 'flex';
-
-    }
-  );
-
-
-/* إلغاء بدء الانتخابات الجديدة */
-
-function cancelResetElection(){
-
-  document
-    .getElementById('resetConfirmModal')
-    .style.display = 'none';
+  document.getElementById(
+    "resetConfirmModal"
+  ).style.display = "flex";
 
 }
 
 
-/* تأكيد بدء انتخابات جديدة */
+/* =========================================
+   إغلاق نافذة إعادة الانتخابات
+========================================= */
+
+function closeResetModal(){
+
+  document.getElementById(
+    "resetConfirmModal"
+  ).style.display = "none";
+
+}
+
+
+/* =========================================
+   تأكيد إعادة الانتخابات
+========================================= */
 
 function confirmResetElection(){
 
-  /*
-   * حذف جميع الأصوات الحالية
-   * من نفس الجهاز والمتصفح
-   */
-
   localStorage.removeItem(
-    'classElectionVotes'
+    "classElectionVotes"
   );
 
 
-  /*
-   * إغلاق نافذة التأكيد
-   */
-
-  document
-    .getElementById('resetConfirmModal')
-    .style.display = 'none';
+  document.getElementById(
+    "resetConfirmModal"
+  ).style.display = "none";
 
 
-  /*
-   * إخفاء النتائج
-   */
-
-  document
-    .getElementById('results')
-    .style.display = 'none';
+  document.getElementById(
+    "results"
+  ).style.display = "none";
 
 
-  /*
-   * إظهار بطاقة التصويت
-   */
-
-  document
-    .getElementById('voting')
-    .style.display = 'block';
+  document.getElementById(
+    "voting"
+  ).style.display = "block";
 
 
-  /*
-   * إلغاء جميع الاختيارات
-   */
+  document.querySelectorAll(
+    'input[type="radio"]'
+  ).forEach(function(input){
 
-  document
-    .querySelectorAll('input[type="radio"]')
-    .forEach(function(input){
-
-      input.checked = false;
-
-    });
-
-
-  /*
-   * إخفاء رسالة الخطأ
-   */
-
-  document
-    .getElementById('error')
-    .style.display = 'none';
-
-
-  /*
-   * مسح النتائج القديمة من الصفحة
-   */
-
-  document
-    .getElementById('resultList')
-    .innerHTML = '';
-
-
-  /*
-   * الرجوع إلى أعلى الصفحة
-   */
-
-  window.scrollTo({
-
-    top:0,
-
-    behavior:'smooth'
+    input.checked = false;
 
   });
 
+
+  hideError();
+
+
+  document.getElementById(
+    "resultList"
+  ).innerHTML = "";
+
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+
 }
+
+
+/* =========================================
+   الأزرار
+========================================= */
+
+document.getElementById(
+  "voteBtn"
+).addEventListener(
+  "click",
+  openVoteConfirm
+);
+
+
+document.getElementById(
+  "confirmVoteBtn"
+).addEventListener(
+  "click",
+  submitVote
+);
+
+
+document.getElementById(
+  "cancelVoteBtn"
+).addEventListener(
+  "click",
+  closeVoteConfirm
+);
+
+
+document.getElementById(
+  "newVoterBtn"
+).addEventListener(
+  "click",
+  newVoter
+);
+
+
+document.getElementById(
+  "refreshBtn"
+).addEventListener(
+  "click",
+  showResults
+);
+
+
+document.getElementById(
+  "resetElectionBtn"
+).addEventListener(
+  "click",
+  openResetModal
+);
+
+
+document.getElementById(
+  "cancelResetBtn"
+).addEventListener(
+  "click",
+  closeResetModal
+);
+
+
+document.getElementById(
+  "confirmResetBtn"
+).addEventListener(
+  "click",
+  confirmResetElection
+);
+
+
+/* =========================================
+   إغلاق النوافذ عند الضغط خارجها
+========================================= */
+
+document.getElementById(
+  "voteConfirmModal"
+).addEventListener(
+  "click",
+  function(event){
+
+    if(event.target === this){
+
+      closeVoteConfirm();
+
+    }
+
+  }
+);
+
+
+document.getElementById(
+  "resetConfirmModal"
+).addEventListener(
+  "click",
+  function(event){
+
+    if(event.target === this){
+
+      closeResetModal();
+
+    }
+
+  }
+);
+
+
+/* =========================================
+   عند فتح الموقع
+========================================= */
+
+(function(){
+
+  const data = getData();
+
+  let hasVotes = false;
+
+
+  Object.keys(data).forEach(function(role){
+
+    Object.keys(data[role] || {}).forEach(
+      function(candidate){
+
+        if((data[role][candidate] || 0) > 0){
+
+          hasVotes = true;
+
+        }
+
+      }
+    );
+
+  });
+
+
+  if(hasVotes){
+
+    document.getElementById(
+      "voting"
+    ).style.display = "none";
+
+
+    document.getElementById(
+      "results"
+    ).style.display = "block";
+
+
+    showResults();
+
+  }
+
+})();
 
 </script>
 
