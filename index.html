@@ -50,156 +50,204 @@ body{
 
 /* =========================================================
    الافتتاحية
-========================================================= */
+   ========================================================= */
 
 .intro{
   position:fixed;
   inset:0;
-  z-index:1000;
+  z-index:9999;
   overflow:hidden;
   display:flex;
   align-items:center;
   justify-content:center;
-  padding:24px;
-
+  min-height:100dvh;
+  padding:25px;
   background:
-    radial-gradient(circle at 15% 15%,rgba(118,160,255,.28),transparent 28%),
-    radial-gradient(circle at 85% 80%,rgba(94,133,231,.30),transparent 30%),
-    linear-gradient(135deg,#10245d 0%,#1e3d91 48%,#3157b7 100%);
-
+    radial-gradient(circle at 15% 20%,#6d8bea55 0,transparent 28%),
+    radial-gradient(circle at 85% 75%,#7d9cf755 0,transparent 30%),
+    linear-gradient(135deg,#101f55 0%,#23499f 48%,#416bd0 100%);
   transition:
-    opacity .75s ease,
-    visibility .75s ease,
-    transform .85s cubic-bezier(.77,0,.18,1);
+    opacity .8s ease,
+    visibility .8s ease,
+    transform 1s cubic-bezier(.77,0,.18,1);
 }
 
-.intro:before{
-  content:"";
-  position:absolute;
-  inset:0;
-
-  background:
-    linear-gradient(
-      120deg,
-      transparent 0%,
-      transparent 42%,
-      rgba(255,255,255,.08) 50%,
-      transparent 58%,
-      transparent 100%
-    );
-
-  transform:translateX(-100%);
-  animation:introLight 4s infinite;
-}
-
-.intro:after{
-  content:"";
-  position:absolute;
-  width:520px;
-  height:520px;
-  border:1px solid rgba(255,255,255,.13);
-  border-radius:50%;
-  top:-220px;
-  left:-170px;
-
-  box-shadow:
-    0 0 0 45px rgba(255,255,255,.035),
-    0 0 0 90px rgba(255,255,255,.025);
-}
-
-.intro-orb{
-  position:absolute;
-  border-radius:50%;
-  background:rgba(255,255,255,.07);
-  filter:blur(1px);
-  animation:floatOrb 6s ease-in-out infinite;
-}
-
-.intro-orb.one{
-  width:170px;
-  height:170px;
-  right:7%;
-  top:12%;
-}
-
-.intro-orb.two{
-  width:95px;
-  height:95px;
-  left:9%;
-  bottom:17%;
-  animation-delay:-2s;
-}
-
-.intro-orb.three{
-  width:45px;
-  height:45px;
-  right:22%;
-  bottom:12%;
-  animation-delay:-4s;
+.intro.hide{
+  opacity:0;
+  visibility:hidden;
+  transform:scale(1.08);
+  pointer-events:none;
 }
 
 .intro-grid{
   position:absolute;
   inset:0;
-  opacity:.08;
-
+  opacity:.13;
   background-image:
-    linear-gradient(rgba(255,255,255,.5) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(255,255,255,.5) 1px,transparent 1px);
+    linear-gradient(#fff 1px,transparent 1px),
+    linear-gradient(90deg,#fff 1px,transparent 1px);
+  background-size:45px 45px;
+  mask-image:linear-gradient(to bottom,#000,transparent 90%);
+}
 
-  background-size:42px 42px;
+.intro-orb{
+  position:absolute;
+  border-radius:50%;
+  filter:blur(2px);
+  opacity:.35;
+  animation:orbFloat 8s ease-in-out infinite;
+}
 
-  mask-image:linear-gradient(
-    to bottom,
+.intro-orb.one{
+  width:320px;
+  height:320px;
+  top:-100px;
+  left:-100px;
+  background:#9eb5ff;
+}
+
+.intro-orb.two{
+  width:250px;
+  height:250px;
+  right:-80px;
+  bottom:-80px;
+  background:#b8c9ff;
+  animation-delay:-3s;
+}
+
+.intro-orb.three{
+  width:120px;
+  height:120px;
+  right:18%;
+  top:14%;
+  background:#fff;
+  opacity:.10;
+  animation-delay:-5s;
+}
+
+@keyframes orbFloat{
+
+  0%,100%{
+    transform:translate3d(0,0,0) scale(1)
+  }
+
+  50%{
+    transform:translate3d(20px,-18px,0) scale(1.06)
+  }
+
+}
+
+.intro-rings{
+  position:absolute;
+  width:620px;
+  height:620px;
+  border:1px solid #ffffff16;
+  border-radius:50%;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+}
+
+.intro-rings:before,
+.intro-rings:after{
+  content:'';
+  position:absolute;
+  inset:55px;
+  border:1px solid #ffffff12;
+  border-radius:50%;
+}
+
+.intro-rings:after{
+  inset:115px;
+  border-color:#ffffff0e;
+}
+
+.intro-shine{
+  position:absolute;
+  width:180px;
+  height:100%;
+  top:-20%;
+  left:-30%;
+  background:linear-gradient(
+    90deg,
     transparent,
-    black 25%,
-    black 75%,
+    #ffffff18,
     transparent
   );
+  transform:rotate(18deg);
+  animation:introShine 6s ease-in-out infinite;
+}
+
+@keyframes introShine{
+
+  0%{
+    left:-35%
+  }
+
+  55%,100%{
+    left:135%
+  }
+
 }
 
 .intro-content{
   position:relative;
   z-index:2;
-
-  width:min(560px,100%);
+  width:min(720px,100%);
   text-align:center;
-  color:#fff;
-
-  animation:introContentIn 1s cubic-bezier(.2,.8,.2,1) both;
+  color:white;
 }
 
 .intro-logo-wrap{
-  width:128px;
-  height:128px;
-  margin:0 auto 22px;
-
-  padding:8px;
-
-  display:grid;
-  place-items:center;
-
-  border-radius:34px;
-
-  background:rgba(255,255,255,.14);
-  border:1px solid rgba(255,255,255,.30);
-
+  width:145px;
+  height:145px;
+  margin:0 auto 25px;
+  padding:9px;
+  border-radius:38px;
+  background:#ffffff18;
+  border:1px solid #ffffff55;
   box-shadow:
-    0 25px 60px rgba(0,0,0,.20),
-    inset 0 0 25px rgba(255,255,255,.08);
-
-  backdrop-filter:blur(12px);
-
-  animation:logoFloat 3.5s ease-in-out infinite;
+    0 0 0 10px #ffffff08,
+    0 25px 70px #07153666;
+  backdrop-filter:blur(14px);
+  animation:
+    introLogo .9s cubic-bezier(.2,.8,.2,1) both,
+    logoFloat 5s ease-in-out 1s infinite;
 }
 
 .intro-logo{
   width:100%;
   height:100%;
   object-fit:contain;
-  border-radius:25px;
-  background:#fff;
-  padding:7px;
+  border-radius:29px;
+  background:white;
+  padding:9px;
+}
+
+@keyframes introLogo{
+
+  from{
+    opacity:0;
+    transform:scale(.65) translateY(25px);
+  }
+
+  to{
+    opacity:1;
+    transform:scale(1) translateY(0);
+  }
+
+}
+
+@keyframes logoFloat{
+
+  0%,100%{
+    transform:translateY(0)
+  }
+
+  50%{
+    transform:translateY(-7px)
+  }
+
 }
 
 .intro-eyebrow{
@@ -207,178 +255,221 @@ body{
   font-weight:800;
   letter-spacing:3px;
   opacity:.78;
-  margin-bottom:8px;
+  animation:introText .8s .15s both;
 }
 
-.intro h1{
-  margin:0;
-  font-size:clamp(32px,7vw,58px);
-  line-height:1.2;
+.intro-title{
+  margin:8px 0 5px;
+  font-size:clamp(34px,7vw,64px);
+  line-height:1.15;
   font-weight:800;
-
-  text-shadow:
-    0 8px 30px rgba(0,0,0,.18);
+  text-shadow:0 12px 35px #07153655;
+  animation:introText .8s .28s both;
 }
 
-.intro-title-line{
-  width:75px;
-  height:4px;
-  margin:17px auto;
-
-  border-radius:20px;
-
-  background:linear-gradient(
-    90deg,
-    transparent,
-    #ffe3a0,
-    transparent
-  );
-}
-
-.intro-main-text{
-  margin:0;
-  font-size:clamp(17px,3.8vw,22px);
-  font-weight:800;
+.intro-subtitle{
+  margin:0 auto;
+  font-size:clamp(16px,3vw,21px);
+  font-weight:700;
   color:#fff;
+  animation:introText .8s .4s both;
 }
 
-.intro-sub-text{
-  max-width:480px;
-  margin:10px auto 0;
-
+.intro-description{
+  max-width:600px;
+  margin:12px auto 0;
+  color:#e9efff;
   font-size:13px;
-  line-height:2;
+  line-height:1.9;
+  animation:introText .8s .52s both;
+}
 
-  color:rgba(255,255,255,.78);
+@keyframes introText{
+
+  from{
+    opacity:0;
+    transform:translateY(18px)
+  }
+
+  to{
+    opacity:1;
+    transform:translateY(0)
+  }
+
 }
 
 .intro-badges{
   display:flex;
   justify-content:center;
-  gap:8px;
   flex-wrap:wrap;
-  margin-top:20px;
+  gap:8px;
+  margin:20px 0;
+  animation:introText .8s .65s both;
 }
 
 .intro-badge{
-  padding:7px 12px;
+  padding:8px 13px;
+  border:1px solid #ffffff2d;
   border-radius:999px;
-
-  background:rgba(255,255,255,.10);
-  border:1px solid rgba(255,255,255,.18);
-
+  background:#ffffff12;
+  backdrop-filter:blur(10px);
   font-size:11px;
   font-weight:700;
-
-  backdrop-filter:blur(8px);
+  color:#f7f9ff;
 }
 
-.start-btn{
+.start-election{
   position:relative;
   overflow:hidden;
-
-  margin-top:27px;
-
-  min-width:220px;
-  padding:15px 24px;
-
+  min-width:260px;
   border:0;
-  border-radius:17px;
-
-  background:#fff;
-  color:var(--navy);
-
+  padding:17px 28px;
+  border-radius:18px;
+  color:#17316f;
+  background:white;
   font-family:inherit;
-  font-size:16px;
+  font-size:17px;
   font-weight:800;
-
   cursor:pointer;
-
   box-shadow:
-    0 15px 35px rgba(0,0,0,.20);
-
+    0 15px 35px #0715364d,
+    0 0 0 1px #ffffff;
   transition:
-    transform .2s ease,
-    box-shadow .2s ease;
+    transform .25s,
+    box-shadow .25s;
+  animation:
+    introText .8s .78s both,
+    buttonPulse 2.5s 1.7s ease-in-out infinite;
 }
 
-.start-btn:before{
-  content:"";
+.start-election:hover{
+  transform:translateY(-3px) scale(1.015);
+  box-shadow:
+    0 20px 45px #07153666,
+    0 0 0 4px #ffffff22;
+}
+
+.start-election:active{
+  transform:scale(.97)
+}
+
+.start-election:before{
+  content:'';
   position:absolute;
   top:0;
   bottom:0;
-  width:70px;
-
+  width:80px;
+  left:-100px;
   background:linear-gradient(
     90deg,
     transparent,
-    rgba(255,255,255,.8),
+    #ffffffaa,
     transparent
   );
-
-  transform:translateX(-120px);
-  animation:buttonShine 3s infinite;
+  transform:skewX(-20deg);
+  animation:buttonShine 3.2s 2s infinite;
 }
 
-.start-btn:hover{
-  transform:translateY(-3px);
-  box-shadow:
-    0 20px 40px rgba(0,0,0,.25);
+@keyframes buttonShine{
+
+  0%,45%{
+    left:-100px
+  }
+
+  70%,100%{
+    left:120%
+  }
+
 }
 
-.start-btn:active{
-  transform:scale(.94);
+@keyframes buttonPulse{
+
+  0%,100%{
+    box-shadow:
+      0 15px 35px #0715364d,
+      0 0 0 1px #ffffff
+  }
+
+  50%{
+    box-shadow:
+      0 18px 40px #07153666,
+      0 0 0 6px #ffffff0d
+  }
+
 }
 
 .intro-engineer{
   margin-top:20px;
-
+  color:#dce6ff;
   font-size:11px;
   font-weight:700;
-
-  color:rgba(255,255,255,.68);
+  animation:introText .8s .9s both;
 }
 
 .intro-engineer strong{
-  color:#ffe3a0;
+  color:#ffe4a3
+}
+
+
+/* انتقال الافتتاحية */
+
+.intro.launching .intro-content{
+  animation:introLaunch .9s cubic-bezier(.7,0,.2,1) forwards;
+}
+
+.intro.launching:after{
+  content:'';
+  position:absolute;
+  width:30px;
+  height:30px;
+  border-radius:50%;
+  background:white;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+  animation:launchCircle 1s cubic-bezier(.65,0,.25,1) forwards;
+}
+
+@keyframes introLaunch{
+
+  0%{
+    transform:scale(1);
+    opacity:1;
+  }
+
+  100%{
+    transform:scale(.82);
+    opacity:0;
+  }
+
+}
+
+@keyframes launchCircle{
+
+  0%{
+    width:20px;
+    height:20px;
+    opacity:.9;
+  }
+
+  100%{
+    width:180vmax;
+    height:180vmax;
+    opacity:0;
+  }
+
 }
 
 
 /* =========================================================
-   Animation عند بدء الانتخابات
-========================================================= */
-
-.intro.starting{
-  animation:introExit .85s cubic-bezier(.77,0,.18,1) forwards;
-}
-
-.intro.starting .intro-content{
-  animation:introContentExit .7s cubic-bezier(.77,0,.18,1) forwards;
-}
-
-.intro.starting .intro-logo-wrap{
-  animation:logoExit .65s ease forwards;
-}
+   الموقع الأصلي
+   ========================================================= */
 
 .page{
   max-width:1100px;
   margin:auto;
   padding:24px 18px 60px;
-
-  opacity:0;
-  transform:translateY(28px) scale(.985);
-
-  animation:none;
 }
-
-.page.ready{
-  animation:pageEnter .8s .18s cubic-bezier(.2,.8,.2,1) forwards;
-}
-
-
-/* =========================================================
-   باقي التصميم الأصلي
-========================================================= */
 
 .topbar{
   display:flex;
@@ -386,7 +477,7 @@ body{
   align-items:center;
   padding:8px 4px 18px;
   color:var(--muted);
-  font-size:13px
+  font-size:13px;
 }
 
 .brand{
@@ -394,18 +485,26 @@ body{
   align-items:center;
   gap:10px;
   font-weight:800;
-  color:var(--navy)
+  color:var(--navy);
 }
 
 .crest{
   width:38px;
   height:38px;
   border-radius:12px;
-  background:linear-gradient(145deg,var(--blue),var(--navy));
+  overflow:hidden;
+  background:white;
   display:grid;
   place-items:center;
   color:white;
-  box-shadow:0 8px 18px #3157b72b
+  box-shadow:0 8px 18px #3157b72b;
+}
+
+.crest img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  padding:4px;
 }
 
 .hero{
@@ -415,7 +514,7 @@ body{
   padding:38px 28px;
   color:white;
   background:linear-gradient(135deg,#19316f,#3157b7 58%,#5678d5);
-  box-shadow:0 25px 65px #3157b72e
+  box-shadow:0 25px 65px #3157b72e;
 }
 
 .hero:after{
@@ -429,36 +528,33 @@ body{
   top:-120px;
   box-shadow:
     0 0 0 35px #ffffff09,
-    0 0 0 70px #ffffff06
+    0 0 0 70px #ffffff06;
 }
 
 .hero-content{
   position:relative;
   z-index:1;
-  text-align:center
+  text-align:center;
 }
 
 .eyebrow{
   letter-spacing:2px;
   font-size:12px;
   opacity:.8;
-  font-weight:700
+  font-weight:700;
 }
 
 .hero h1{
   font-size:clamp(30px,6vw,52px);
   margin:7px 0 3px;
-  font-weight:800
+  font-weight:800;
 }
 
 .hero p{
   margin:0;
   opacity:.88;
-  font-size:15px
+  font-size:15px;
 }
-
-
-/* إعداد المهندس التقني */
 
 .engineer{
   margin:18px auto 0;
@@ -473,11 +569,11 @@ body{
   color:#fff;
   font-size:12px;
   font-weight:700;
-  box-shadow:0 8px 20px #00000012
+  box-shadow:0 8px 20px #00000012;
 }
 
 .engineer strong{
-  color:#ffe3a0
+  color:#ffe3a0;
 }
 
 .status{
@@ -485,7 +581,7 @@ body{
   display:flex;
   justify-content:center;
   gap:8px;
-  flex-wrap:wrap
+  flex-wrap:wrap;
 }
 
 .pill{
@@ -493,7 +589,7 @@ body{
   border:1px solid #ffffff25;
   padding:7px 13px;
   border-radius:999px;
-  font-size:12px
+  font-size:12px;
 }
 
 .section{
@@ -502,7 +598,7 @@ body{
   border-radius:28px;
   margin-top:18px;
   padding:24px;
-  box-shadow:var(--shadow)
+  box-shadow:var(--shadow);
 }
 
 .section-head{
@@ -510,18 +606,18 @@ body{
   align-items:end;
   justify-content:space-between;
   gap:12px;
-  margin-bottom:18px
+  margin-bottom:18px;
 }
 
 .section h2{
   margin:0;
   font-size:21px;
-  color:var(--navy)
+  color:var(--navy);
 }
 
 .hint{
   font-size:12px;
-  color:var(--muted)
+  color:var(--muted);
 }
 
 .candidate-note{
@@ -537,11 +633,11 @@ body{
   color:#8b650d;
   font-size:13px;
   font-weight:700;
-  box-shadow:0 6px 18px #17255408
+  box-shadow:0 6px 18px #17255408;
 }
 
 .candidate-note span{
-  color:var(--navy)
+  color:var(--navy);
 }
 
 .role{
@@ -549,7 +645,7 @@ body{
   border-radius:22px;
   margin:15px 0;
   overflow:hidden;
-  background:#fbfcfe
+  background:#fbfcfe;
 }
 
 .role-head{
@@ -558,7 +654,7 @@ body{
   gap:12px;
   padding:16px 18px;
   background:linear-gradient(180deg,#fff,#f9faff);
-  border-bottom:1px solid var(--line)
+  border-bottom:1px solid var(--line);
 }
 
 .role-icon{
@@ -569,34 +665,34 @@ body{
   color:var(--blue);
   display:grid;
   place-items:center;
-  font-size:21px
+  font-size:21px;
 }
 
 .role-title{
   font-weight:800;
   color:var(--navy);
-  font-size:16px
+  font-size:16px;
 }
 
 .role-sub{
   font-size:11px;
-  color:var(--muted)
+  color:var(--muted);
 }
 
 .candidates{
   display:grid;
   grid-template-columns:repeat(4,1fr);
   gap:10px;
-  padding:14px
+  padding:14px;
 }
 
 .candidate{
-  position:relative
+  position:relative;
 }
 
 .candidate input{
   position:absolute;
-  opacity:0
+  opacity:0;
 }
 
 .candidate label{
@@ -612,7 +708,7 @@ body{
   transition:.2s;
   box-shadow:0 8px 24px #1725540d;
   position:relative;
-  overflow:hidden
+  overflow:hidden;
 }
 
 .candidate label:before{
@@ -621,19 +717,19 @@ body{
   inset:0 auto 0 0;
   width:4px;
   background:linear-gradient(180deg,var(--gold),var(--blue));
-  opacity:.75
+  opacity:.75;
 }
 
 .candidate label:hover{
   transform:translateY(-2px);
   border-color:#9eb2eb;
-  box-shadow:0 10px 22px #3157b714
+  box-shadow:0 10px 22px #3157b714;
 }
 
 .candidate input:checked+label{
   border-color:var(--blue);
   background:linear-gradient(145deg,#f5f7ff,#edf2ff);
-  box-shadow:0 0 0 3px #3157b718
+  box-shadow:0 0 0 3px #3157b718;
 }
 
 .avatar{
@@ -649,42 +745,42 @@ body{
   font-size:18px;
   box-shadow:
     inset 0 0 0 1px #ffffffaa,
-    0 5px 12px #3157b718
+    0 5px 12px #3157b718;
 }
 
 .candidate:nth-child(2) .avatar{
-  background:linear-gradient(145deg,#fff1cf,#f4d99a)
+  background:linear-gradient(145deg,#fff1cf,#f4d99a);
 }
 
 .candidate:nth-child(3) .avatar{
-  background:linear-gradient(145deg,#dff7ef,#b8e5d6)
+  background:linear-gradient(145deg,#dff7ef,#b8e5d6);
 }
 
 .candidate:nth-child(4) .avatar{
-  background:linear-gradient(145deg,#f0e4ff,#dac5f5)
+  background:linear-gradient(145deg,#f0e4ff,#dac5f5);
 }
 
 .candidate:nth-child(1) .avatar:before{
-  content:'👑'
+  content:'👑';
 }
 
 .candidate:nth-child(2) .avatar:before{
-  content:'⭐'
+  content:'⭐';
 }
 
 .candidate:nth-child(3) .avatar:before{
-  content:'🎯'
+  content:'🎯';
 }
 
 .candidate:nth-child(4) .avatar:before{
-  content:'🏅'
+  content:'🏅';
 }
 
 .name{
   font-size:14px;
   font-weight:800;
   line-height:1.5;
-  color:var(--navy)
+  color:var(--navy);
 }
 
 .check{
@@ -693,12 +789,12 @@ body{
   height:20px;
   border:2px solid #ccd3e0;
   border-radius:50%;
-  position:relative
+  position:relative;
 }
 
 .candidate input:checked+label .check{
   border-color:var(--blue);
-  background:var(--blue)
+  background:var(--blue);
 }
 
 .candidate input:checked+label .check:after{
@@ -708,7 +804,7 @@ body{
   position:absolute;
   inset:0;
   display:grid;
-  place-items:center
+  place-items:center;
 }
 
 .action{
@@ -721,7 +817,7 @@ body{
   border:1px solid #e9edf5;
   border-radius:20px;
   box-shadow:0 15px 35px #17255418;
-  z-index:5
+  z-index:5;
 }
 
 .vote-btn{
@@ -736,11 +832,11 @@ body{
   font-weight:800;
   cursor:pointer;
   box-shadow:0 12px 24px #3157b733;
-  transition:.2s
+  transition:.2s;
 }
 
 .vote-btn:hover{
-  transform:translateY(-1px)
+  transform:translateY(-1px);
 }
 
 .error{
@@ -748,14 +844,14 @@ body{
   text-align:center;
   color:#b42318;
   font-size:13px;
-  margin-top:9px
+  margin-top:9px;
 }
 
 
 /* النتائج */
 
 .results{
-  display:none
+  display:none;
 }
 
 .vote-count-note{
@@ -766,7 +862,7 @@ body{
   border:1px solid #e2e8f5;
   color:var(--navy);
   font-weight:700;
-  text-align:center
+  text-align:center;
 }
 
 .winner-card{
@@ -775,31 +871,31 @@ body{
   padding:15px 16px;
   margin:10px 0;
   background:linear-gradient(145deg,#fff,#f9fbff);
-  box-shadow:0 7px 20px #17255408
+  box-shadow:0 7px 20px #17255408;
 }
 
 .role-line{
   display:flex;
   align-items:center;
   justify-content:space-between;
-  gap:12px
+  gap:12px;
 }
 
 .role-name{
   font-weight:800;
-  color:var(--navy)
+  color:var(--navy);
 }
 
 .winner-name{
   font-size:17px;
   font-weight:800;
   color:var(--blue);
-  margin-top:7px
+  margin-top:7px;
 }
 
 .votes{
   font-size:12px;
-  color:var(--muted)
+  color:var(--muted);
 }
 
 .badge{
@@ -809,7 +905,7 @@ body{
   padding:5px 9px;
   border-radius:999px;
   font-size:11px;
-  font-weight:700
+  font-weight:700;
 }
 
 .bar{
@@ -817,18 +913,15 @@ body{
   background:#edf0f5;
   border-radius:99px;
   overflow:hidden;
-  margin-top:8px
+  margin-top:8px;
 }
 
 .bar i{
   display:block;
   height:100%;
   background:linear-gradient(90deg,var(--blue),#6b8be0);
-  border-radius:99px
+  border-radius:99px;
 }
-
-
-/* تحديث النتائج */
 
 .refresh-results{
   width:100%;
@@ -842,21 +935,18 @@ body{
   font-size:15px;
   font-weight:800;
   cursor:pointer;
-  transition:.2s
+  transition:.2s;
 }
 
 .refresh-results:hover{
   transform:translateY(-1px);
   background:#f0f4ff;
-  box-shadow:0 8px 18px #3157b718
+  box-shadow:0 8px 18px #3157b718;
 }
 
 .refresh-results:active{
-  transform:scale(.98)
+  transform:scale(.98);
 }
-
-
-/* تصويت طالب آخر */
 
 .vote-again{
   width:100%;
@@ -870,15 +960,12 @@ body{
   font-size:15px;
   font-weight:800;
   cursor:pointer;
-  box-shadow:0 10px 22px #16856b2b
+  box-shadow:0 10px 22px #16856b2b;
 }
 
 .vote-again:hover{
-  transform:translateY(-1px)
+  transform:translateY(-1px);
 }
-
-
-/* بدء انتخابات جديدة */
 
 .reset{
   margin-top:10px;
@@ -892,17 +979,17 @@ body{
   font-size:14px;
   font-weight:800;
   cursor:pointer;
-  transition:.2s
+  transition:.2s;
 }
 
 .reset:hover{
   background:#fff7f7;
   color:#b42318;
-  border-color:#efb4b4
+  border-color:#efb4b4;
 }
 
 .reset:active{
-  transform:scale(.98)
+  transform:scale(.98);
 }
 
 
@@ -917,7 +1004,7 @@ body{
   z-index:20;
   align-items:center;
   justify-content:center;
-  padding:20px
+  padding:20px;
 }
 
 .modal-box{
@@ -927,28 +1014,28 @@ body{
   border-radius:26px;
   padding:28px;
   text-align:center;
-  box-shadow:0 30px 80px #0004
+  box-shadow:0 30px 80px #0004;
 }
 
 .modal-box .big{
-  font-size:45px
+  font-size:45px;
 }
 
 .modal-box h3{
   margin:8px 0;
-  color:var(--navy)
+  color:var(--navy);
 }
 
 .modal-box p{
   color:var(--muted);
   font-size:13px;
-  line-height:1.9
+  line-height:1.9;
 }
 
 .modal-actions{
   display:flex;
   gap:10px;
-  margin-top:20px
+  margin-top:20px;
 }
 
 .modal-actions button{
@@ -957,148 +1044,36 @@ body{
   border-radius:14px;
   font-family:inherit;
   font-weight:700;
-  cursor:pointer
+  cursor:pointer;
 }
 
 .cancel{
   border:1px solid var(--line);
-  background:#fff
+  background:#fff;
 }
 
 .confirm{
   border:0;
   background:var(--blue);
-  color:#fff
+  color:#fff;
 }
 
 .footer{
   text-align:center;
   color:#8a94a5;
   font-size:11px;
-  margin-top:24px
+  margin-top:24px;
 }
 
 
 /* =========================================================
-   Animations
-========================================================= */
-
-@keyframes introLight{
-
-  0%{
-    transform:translateX(-100%);
-  }
-
-  45%,
-  100%{
-    transform:translateX(100%);
-  }
-
-}
-
-@keyframes floatOrb{
-
-  0%,
-  100%{
-    transform:translateY(0) translateX(0);
-  }
-
-  50%{
-    transform:translateY(-18px) translateX(10px);
-  }
-
-}
-
-@keyframes logoFloat{
-
-  0%,
-  100%{
-    transform:translateY(0);
-  }
-
-  50%{
-    transform:translateY(-7px);
-  }
-
-}
-
-@keyframes introContentIn{
-
-  from{
-    opacity:0;
-    transform:translateY(30px) scale(.96);
-  }
-
-  to{
-    opacity:1;
-    transform:translateY(0) scale(1);
-  }
-
-}
-
-@keyframes introExit{
-
-  0%{
-    opacity:1;
-    transform:scale(1);
-  }
-
-  45%{
-    opacity:1;
-    transform:scale(1.02);
-  }
-
-  100%{
-    opacity:0;
-    visibility:hidden;
-    transform:scale(1.08) translateY(-20px);
-  }
-
-}
-
-@keyframes introContentExit{
-
-  to{
-    opacity:0;
-    transform:translateY(-35px) scale(.94);
-    filter:blur(5px);
-  }
-
-}
-
-@keyframes logoExit{
-
-  to{
-    opacity:0;
-    transform:scale(1.22) rotate(3deg);
-    filter:blur(4px);
-  }
-
-}
-
-@keyframes pageEnter{
-
-  from{
-    opacity:0;
-    transform:translateY(28px) scale(.985);
-  }
-
-  to{
-    opacity:1;
-    transform:translateY(0) scale(1);
-  }
-
-}
-
-
-/* =========================================================
-   الجوال
-========================================================= */
+   Responsive
+   ========================================================= */
 
 @media(max-width:850px){
 
   .candidates{
-    grid-template-columns:repeat(2,1fr)
+    grid-template-columns:repeat(2,1fr);
   }
 
 }
@@ -1106,81 +1081,61 @@ body{
 @media(max-width:500px){
 
   .page{
-    padding:12px 11px 45px
+    padding:12px 11px 45px;
   }
 
   .hero{
     padding:30px 18px;
-    border-radius:24px
+    border-radius:24px;
   }
 
   .section{
     padding:15px;
-    border-radius:22px
+    border-radius:22px;
   }
 
   .candidates{
-    grid-template-columns:1fr
+    grid-template-columns:1fr;
   }
 
   .candidate label{
-    min-height:62px
+    min-height:62px;
   }
 
   .topbar{
-    padding-top:2px
+    padding-top:2px;
   }
 
   .modal-box{
-    padding:24px 18px
+    padding:24px 18px;
   }
 
   .engineer{
-    font-size:11px
-  }
-
-  .intro{
-    padding:18px
+    font-size:11px;
   }
 
   .intro-logo-wrap{
-    width:105px;
-    height:105px;
-    border-radius:28px;
-    margin-bottom:18px
+    width:120px;
+    height:120px;
+    border-radius:32px;
   }
 
-  .intro h1{
-    font-size:34px
+  .intro-title{
+    font-size:36px;
   }
 
-  .intro-main-text{
-    font-size:16px
+  .intro-description{
+    font-size:12px;
   }
 
-  .intro-sub-text{
-    font-size:12px
-  }
-
-  .start-btn{
+  .start-election{
     width:100%;
-    max-width:280px
+    min-width:0;
   }
 
-}
-
-
-/* تقليل الحركة لمن يفضل ذلك */
-
-@media(prefers-reduced-motion:reduce){
-
-  *,
-  *:before,
-  *:after{
-    animation-duration:.01ms !important;
-    animation-iteration-count:1 !important;
-    scroll-behavior:auto !important;
-    transition-duration:.01ms !important;
+  .intro-rings{
+    width:480px;
+    height:480px;
   }
 
 }
@@ -1193,20 +1148,21 @@ body{
 <body>
 
 
-<!-- =======================================================
+<!-- =========================================================
      الافتتاحية
-======================================================= -->
+     ========================================================= -->
 
-<div
-  id="intro"
-  class="intro"
->
+<div class="intro" id="intro">
 
   <div class="intro-grid"></div>
 
   <div class="intro-orb one"></div>
   <div class="intro-orb two"></div>
   <div class="intro-orb three"></div>
+
+  <div class="intro-rings"></div>
+
+  <div class="intro-shine"></div>
 
 
   <div class="intro-content">
@@ -1226,26 +1182,23 @@ body{
 
 
     <div class="intro-eyebrow">
-      2026 • CLASS ELECTION
+      CLASS ELECTION • 2026
     </div>
 
 
-    <h1>
+    <h1 class="intro-title">
       انتخابات مجلس الصف
     </h1>
 
 
-    <div class="intro-title-line"></div>
+    <div class="intro-subtitle">
+      🗳️ تصويتك يصنع الفرق
+    </div>
 
 
-    <p class="intro-main-text">
-      🗳️ تصويتك أمانة، واختيارك يصنع الفرق
-    </p>
-
-
-    <p class="intro-sub-text">
-      شارك في انتخابات مجلس الصف 2026،
-      واختر من تراه الأنسب لتمثيل صفك.
+    <p class="intro-description">
+      اختر من تراه الأنسب لتمثيل صفك،
+      وشارك في صناعة مجلس الصف لعام 2026.
     </p>
 
 
@@ -1267,12 +1220,12 @@ body{
 
 
     <button
-      class="start-btn"
+      class="start-election"
       type="button"
       onclick="startElection()"
     >
       🗳️ بدء الانتخابات
-      <span> ←</span>
+      <span>←</span>
     </button>
 
 
@@ -1282,21 +1235,16 @@ body{
       👨🏻‍💻👨🏻‍🔧
     </div>
 
-
   </div>
 
 </div>
 
 
+<!-- =========================================================
+     الموقع الأصلي
+     ========================================================= -->
 
-<!-- =======================================================
-     الصفحة الأصلية
-======================================================= -->
-
-<div
-  id="mainPage"
-  class="page"
->
+<div class="page">
 
 
   <!-- الشريط العلوي -->
@@ -1306,7 +1254,12 @@ body{
     <div class="brand">
 
       <span class="crest">
-        ✦
+
+        <img
+          src="IMG_0057.jpeg"
+          alt="شعار المدرسة"
+        >
+
       </span>
 
       مجلس الصف
@@ -1339,18 +1292,10 @@ body{
       </p>
 
 
-      <!-- إعداد المهندس التقني -->
-
       <div class="engineer">
-
         ⚙️ إعداد المهندس التقني:
-
-        <strong>
-          المعتصم الحامدي
-        </strong>
-
+        <strong>المعتصم الحامدي</strong>
         👨🏻‍💻👨🏻‍🔧
-
       </div>
 
 
@@ -1377,10 +1322,7 @@ body{
 
   <!-- قسم التصويت -->
 
-  <section
-    id="voting"
-    class="section"
-  >
+  <section id="voting" class="section">
 
     <div class="section-head">
 
@@ -1941,10 +1883,7 @@ body{
         تأكيد التصويت <span>←</span>
       </button>
 
-      <div
-        id="error"
-        class="error"
-      >
+      <div id="error" class="error">
         يرجى اختيار مرشح لكل منصب قبل الإرسال.
       </div>
 
@@ -1989,8 +1928,6 @@ body{
     <div id="resultList"></div>
 
 
-    <!-- تحديث النتائج -->
-
     <button
       class="refresh-results"
       onclick="refreshResults()"
@@ -2000,8 +1937,6 @@ body{
     </button>
 
 
-    <!-- تصويت طالب آخر -->
-
     <button
       class="vote-again"
       onclick="newVoter()"
@@ -2010,8 +1945,6 @@ body{
       👤 تصويت طالب آخر
     </button>
 
-
-    <!-- بدء انتخابات جديدة -->
 
     <button
       class="reset"
@@ -2031,10 +1964,7 @@ body{
 </div>
 
 
-
-<!-- =======================================================
-     نافذة تأكيد التصويت
-======================================================= -->
+<!-- نافذة تأكيد التصويت -->
 
 <div
   class="modal"
@@ -2081,10 +2011,7 @@ body{
 </div>
 
 
-
-<!-- =======================================================
-     نافذة تأكيد بدء انتخابات جديدة
-======================================================= -->
+<!-- نافذة تأكيد بدء انتخابات جديدة -->
 
 <div
   class="modal"
@@ -2133,74 +2060,50 @@ body{
 </div>
 
 
-
 <script>
 
-
 /* =========================================================
-   Animation افتتاحية الانتخابات
-========================================================= */
+   تشغيل الافتتاحية
+   ========================================================= */
 
 function startElection(){
 
   const intro =
     document.getElementById('intro');
 
-  const page =
-    document.getElementById('mainPage');
+  const button =
+    document.querySelector('.start-election');
 
 
-  /*
-   * منع الضغط أكثر من مرة
-   */
+  button.disabled = true;
 
-  if(intro.classList.contains('starting')){
-    return;
-  }
+  intro.classList.add('launching');
 
 
-  /*
-   * تشغيل Animation الخروج
-   */
+  setTimeout(()=>{
 
-  intro.classList.add('starting');
-
-
-  /*
-   * إظهار الصفحة الأصلية
-   * أثناء خروج الافتتاحية
-   */
-
-  setTimeout(function(){
-
-    page.classList.add('ready');
-
-  },180);
-
-
-  /*
-   * إزالة الافتتاحية من الشاشة
-   * بعد انتهاء الحركة
-   */
-
-  setTimeout(function(){
-
-    intro.style.display = 'none';
+    intro.classList.add('hide');
 
     window.scrollTo({
       top:0,
-      behavior:'auto'
+      behavior:'instant'
     });
 
-  },900);
+  },650);
+
+
+  setTimeout(()=>{
+
+    intro.style.display='none';
+
+  },1500);
 
 }
 
 
-
 /* =========================================================
    أسماء المرشحين
-========================================================= */
+   ========================================================= */
 
 const candidates = [
   'هاجر البلوشي',
@@ -2212,7 +2115,7 @@ const candidates = [
 
 /* =========================================================
    المناصب
-========================================================= */
+   ========================================================= */
 
 const roles = [
 
@@ -2245,7 +2148,7 @@ const roles = [
 
 /* =========================================================
    فتح نافذة تأكيد التصويت
-========================================================= */
+   ========================================================= */
 
 function openConfirm(){
 
@@ -2271,9 +2174,7 @@ function openConfirm(){
 }
 
 
-/* =========================================================
-   إغلاق نافذة تأكيد التصويت
-========================================================= */
+/* إغلاق نافذة تأكيد التصويت */
 
 function closeConfirm(){
 
@@ -2283,9 +2184,7 @@ function closeConfirm(){
 }
 
 
-/* =========================================================
-   الحصول على الأصوات من نفس الجهاز
-========================================================= */
+/* الحصول على الأصوات من نفس الجهاز */
 
 function getData(){
 
@@ -2311,9 +2210,7 @@ function getData(){
 }
 
 
-/* =========================================================
-   تسجيل التصويت
-========================================================= */
+/* تسجيل التصويت */
 
 function submitVote(){
 
@@ -2347,10 +2244,6 @@ function submitVote(){
   });
 
 
-  /*
-   * حفظ الأصوات على نفس الجهاز
-   */
-
   localStorage.setItem(
     'classElectionVotes',
     JSON.stringify(data)
@@ -2359,10 +2252,6 @@ function submitVote(){
 
   closeConfirm();
 
-
-  /*
-   * إخفاء التصويت وإظهار النتائج
-   */
 
   document.getElementById('voting').style.display =
     'none';
@@ -2373,9 +2262,7 @@ function submitVote(){
 }
 
 
-/* =========================================================
-   عرض النتائج
-========================================================= */
+/* عرض النتائج */
 
 function showResults(){
 
@@ -2484,9 +2371,7 @@ function showResults(){
 }
 
 
-/* =========================================================
-   تحديث النتائج
-========================================================= */
+/* تحديث النتائج */
 
 function refreshResults(){
 
@@ -2514,9 +2399,7 @@ function refreshResults(){
 }
 
 
-/* =========================================================
-   تصويت طالب آخر
-========================================================= */
+/* تصويت طالب آخر */
 
 function newVoter(){
 
@@ -2552,9 +2435,7 @@ function newVoter(){
 }
 
 
-/* =========================================================
-   فتح نافذة بدء انتخابات جديدة
-========================================================= */
+/* فتح نافذة بدء انتخابات جديدة */
 
 document
   .getElementById('resetElectionBtn')
@@ -2570,9 +2451,7 @@ document
   );
 
 
-/* =========================================================
-   إلغاء بدء الانتخابات الجديدة
-========================================================= */
+/* إلغاء بدء الانتخابات الجديدة */
 
 function cancelResetElection(){
 
@@ -2583,52 +2462,29 @@ function cancelResetElection(){
 }
 
 
-/* =========================================================
-   تأكيد بدء الانتخابات الجديدة
-========================================================= */
+/* تأكيد بدء انتخابات جديدة */
 
 function confirmResetElection(){
-
-  /*
-   * حذف جميع الأصوات الحالية
-   * من نفس الجهاز والمتصفح
-   */
 
   localStorage.removeItem(
     'classElectionVotes'
   );
 
 
-  /*
-   * إغلاق نافذة التأكيد
-   */
-
   document
     .getElementById('resetConfirmModal')
     .style.display = 'none';
 
-
-  /*
-   * إخفاء النتائج
-   */
 
   document
     .getElementById('results')
     .style.display = 'none';
 
 
-  /*
-   * إظهار بطاقة التصويت
-   */
-
   document
     .getElementById('voting')
     .style.display = 'block';
 
-
-  /*
-   * إلغاء جميع الاختيارات
-   */
 
   document
     .querySelectorAll('input[type="radio"]')
@@ -2639,27 +2495,15 @@ function confirmResetElection(){
     });
 
 
-  /*
-   * إخفاء رسالة الخطأ
-   */
-
   document
     .getElementById('error')
     .style.display = 'none';
 
 
-  /*
-   * مسح النتائج القديمة من الصفحة
-   */
-
   document
     .getElementById('resultList')
     .innerHTML = '';
 
-
-  /*
-   * الرجوع إلى أعلى الصفحة
-   */
 
   window.scrollTo({
 
